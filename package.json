@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "main": "index.js",
   "license": "MIT",
+  "script": {
+    "dev": "ts-node-dev src/server.ts"
+  },
   "devDependencies": {
     "@types/mongoose": "^5.10.3",
     "ts-node-dev": "^1.1.1",
