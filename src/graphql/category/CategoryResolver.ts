@@ -3,7 +3,7 @@ import Category from "./Category";
 import CategorySchema from '../../model/CategorySchema';
 
 @Resolver(Category)
-class CategoryResolver{
+class CategoryResolver {
 
     @Query(() => [Category])
     async categories() {
