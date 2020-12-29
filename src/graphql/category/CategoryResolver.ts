@@ -1,13 +1,20 @@
-import { Arg, InputType, Mutation, Query , Resolver } from "type-graphql";
+import { Arg, InputType, Mutation, Query , Resolver, Field } from "type-graphql";
 import Category from "./Category";
 import CategorySchema from '../../model/CategorySchema';
 
+interface ICreateCategory {
+    name: String;
+    description: String;
+  }
 
 @InputType()
 class CategoryInput {
+    @Field()
     name: String;
+    @Field()
     description: String;
 }
+
 @Resolver(Category)
 class CategoryResolver {
 
@@ -19,9 +26,9 @@ class CategoryResolver {
 
     @Mutation(() => Category)
     async createCategory(@Arg("categoryInput") categoryInput: CategoryInput) {
-        const category = await CategorySchema.create(categoryInput);
+        const category = await CategorySchema.create<ICreateCategory>(categoryInput);
         return category;
     }
 }
 
-export default CategoryResolver; 
+export default CategoryResolver;
